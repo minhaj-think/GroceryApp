@@ -5,8 +5,14 @@ import Header from '../../Components/Header/Header';
 import BackIcon1 from './../../asset/back1.svg';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { StatusBar } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { setCurrentScreen } from '../../Store/action';
+
 
 const Address = ({navigation}) => {
+
+  var dispatch = useDispatch();
+
   return (
     <View style={{backgroundColor:'white',height:'200%'}}>
 <StatusBar backgroundColor={'white'}
@@ -36,7 +42,10 @@ showHideTransition={true} />
           <BackIcon1 style={{transform:[{scaleX: -1}]}} />
             </View>
         </View>
-        <Pressable onPress={()=>navigation.navigate('Account')}>
+        <Pressable onPress={()=>{
+          dispatch( setCurrentScreen('Account') )
+          navigation.navigate('Account')}
+          }>
         <View style={{marginTop:60,height:hp(9),justifyContent:'center',width:'100%',borderRadius:10,backgroundColor:'#53b175'}}>
             <Text style={{fontWeight:'700',fontSize:wp(4.5),color:'white',textAlign:'center'}}>Save</Text>
         </View>

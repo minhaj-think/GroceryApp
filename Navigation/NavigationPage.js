@@ -14,12 +14,15 @@ import Address from './../Pages/Address/Address.js';
 import Footer from './../Components/Footer/Footer';
 import Splash from './../Components/Splash/Splash.js';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Provider } from 'react-redux';
+import store from '../Store/index.js';
 
 const Stack = createNativeStackNavigator();
 
 const NavigationPage = ({navigation}) => {
 
   return (
+    <Provider store={store}>
       <Stack.Navigator 
       screenOptions={{
           headerShown:false
@@ -42,6 +45,8 @@ const NavigationPage = ({navigation}) => {
         
         <Stack.Screen name="Footer" component={Footer} />
       </Stack.Navigator>
+    </Provider>
+
     )
 }
 

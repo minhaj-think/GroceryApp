@@ -16,13 +16,16 @@ import CarrotIcon from './../../asset/carrot1.png';
 import BackIcon1 from './../../asset/back1.svg';
 import NotiIcon from './../../asset/notification2.svg';
 // import {useRoute} from '@react-navigation/native';
-
+import { useSelector,useDispatch } from 'react-redux';
+import { setCurrentScreen } from '../../Store/action.js';
 const MyCart = ({navigation}) => {
 
 
   var [handle,setHandle] = useState(false);
 
   const resetHandle = ()=>setHandle(false)
+  var dispatch = useDispatch();
+
 
   return (
           <View style={{backgroundColor:'white'}}>
@@ -39,6 +42,7 @@ showHideTransition={true} />
     <HStack>
     <View style={{width:'10%',display:'flex',alignItems:'flex-start'}}>
           <BackIcon1 style={{}} onPress={()=>{
+            dispatch(setCurrentScreen('Home'))
             setHandle(true)
             setTimeout(()=>{
               setHandle(false)

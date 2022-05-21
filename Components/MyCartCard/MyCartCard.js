@@ -2,6 +2,8 @@ import React,{useState} from 'react'
 import {View,Text,StyleSheet,Image,Pressable,Animated} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector,useDispatch } from 'react-redux';
+import { setCurrentScreen } from '../../Store/action';
 // import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const MyCartCard = ({img,price,title,handle,resetHandle}) => {
@@ -14,6 +16,7 @@ var [count,setCount] = useState(0);
     var Apple = new Animated.ValueXY({x:0,y:0})
     var Carrot = new Animated.ValueXY({x:0,y:0})
     var Banana = new Animated.ValueXY({x:0,y:0})
+    var dispatch = useDispatch();
 
 var anime = Animated.sequence([
     Animated.timing(Scale,{
@@ -55,6 +58,7 @@ var anime = Animated.sequence([
 const handleBack = ()=>{
     setTimeout(()=>{
         anime.reset();
+        dispatch(setCurrentScreen('Home'))
         navigation.navigate('Home')
     },1200)
     anime.start();

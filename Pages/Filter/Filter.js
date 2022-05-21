@@ -6,12 +6,14 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import RangeSlider from 'rn-range-slider';
 import { StatusBar } from 'react-native';
 import { Pressable } from 'native-base';
-
+import { useSelector,useDispatch } from 'react-redux';
+import { setCurrentScreen } from '../../Store/action';
 const Filter = ({navigation}) => {
-
+  
   const [low,setLow] = useState(0)
   const [high,setHigh] = useState(100)
-
+  const dispatch = useDispatch()
+  
   return (
       <>
     <View style={{backgroundColor:'white',height:'200%'}}>
@@ -24,7 +26,10 @@ showHideTransition={true} />
 
     <View style={{flexDirection:'row',marginBottom:10,marginTop:15}}>
     <View style={{width:'20%'}}>
-      <Pressable onPress={()=>navigation.navigate('Home')} >
+      <Pressable onPress={()=>{
+        dispatch(setCurrentScreen('Home'))
+        navigation.navigate('Home')}
+    } >
     <View style={{backgroundColor:'#f9f9f9',height:wp(7.5),width:wp(7.5),borderRadius:5,justifyContent:'center',alignItems:'center'}}>
                 <Text style={{color:'#40aa54',padding:3,paddingTop:0,textAlign:'center'}}>x</Text>
             </View>

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Text,View,StyleSheet,ImageBackground} from 'react-native';
 import HomeIcon from './../../asset/homeicon.svg'
 import Accountlogo from './../../asset/accountlogo.svg'
@@ -18,6 +18,7 @@ import HomeGreen from './../../asset/HomeGreen.svg'
 import OrderGreen from './../../asset/OrderGreen.svg'
 import CartGreen from './../../asset/CartGreen.svg'
 import WishListGreen from './../../asset/WishListGreen.svg'
+import { useSelector,useDispatch } from 'react-redux';
 import AccountGreen from './../../asset/AccountGreen.svg'
 
 import WhishList from '../../Pages/WhishList/WhishList.js';
@@ -35,14 +36,22 @@ const Footer = ({navigation,route}) => {
   // const route = useRoute();
   const navigate = useNavigation();
   const [screen,setScreen] = useState('Home')
+  var currentScreen = useSelector(state=>state.screen)
+
+  useEffect(()=>{
+
+    setScreen(currentScreen)
+
+  },[currentScreen])
 
 
   return (
+
         <Tab.Navigator
           
         sceneContainerStyle={{backgroundColor:'white',marginBottom:20}}
         screenOptions={({route})=>(
-          {tabBarShowLabel:false,tabBarStyle:{marginLeft:-5,width:'100%',borderColor:'transparent'},
+          {tabBarShowLabel:false,tabBarStyle:{width:'100%',borderColor:'transparent'},
         tabBarBackground:()=>{ 
           if(screen=='Account'){
             return(<Accountbar style={{marginLeft:-44,marginTop:-19}}  />) 
@@ -65,7 +74,8 @@ const Footer = ({navigation,route}) => {
                 setScreen('Home')
                 navigate.navigate('Home')            
               }
-              }>
+              }
+              >
               <View>
               {/* <Home  style={{alignSelf:'center'}} /> */}
               <HomeGreen  style={{alignSelf:'center'}} />
@@ -76,7 +86,7 @@ const Footer = ({navigation,route}) => {
           }else{
             return(
               <Pressable
-              style={{backgroundColor:'transparent'}}
+              style={{alignItems:'center',height:'100%',width:'100%'}}
               onPress={()=>{
                 setScreen('Home')
                 navigate.navigate('Home')            
@@ -92,7 +102,6 @@ const Footer = ({navigation,route}) => {
           }
         }
         if(route.name=='Order History'){
-          console.log(route.name,'==>',focused)
           if(focused){
             return(
               <Pressable onPress={()=>{setScreen('Order')
@@ -108,7 +117,8 @@ const Footer = ({navigation,route}) => {
             return(
               <Pressable onPress={()=>{setScreen('Order History')
               navigate.navigate('Order History')            
-            } } >
+            } } 
+            style={{alignItems:'center',height:'100%',width:'100%'}}>
               <View style={{alignItems:'center'}}>
             <Orderhistoy   style={{alignSelf:'center'}} />
           <Text style={{fontSize:10,color:'#333333'}}>Order History</Text>
@@ -135,7 +145,8 @@ const Footer = ({navigation,route}) => {
               <Pressable  onPress={()=>{setScreen('Cart')  
               navigate.navigate('Cart')            
               }
-            } >
+            } 
+            style={{alignItems:'center',height:'100%',width:'100%'}}>
               <View>
               <Cart  style={{alignSelf:'center'}} />
             <Text style={{fontSize:10,color:'#333333'}}>My Cart</Text>
@@ -164,7 +175,8 @@ const Footer = ({navigation,route}) => {
                 ()=>{
               setScreen('Whishlist')
               navigate.navigate('Whishlist')            
-            }}  >
+            }}  
+            style={{alignItems:'center',height:'100%',width:'100%'}}>
               <View>
               <Wishlist  style={{alignSelf:'center'}} />
             <Text style={{fontSize:10,color:'#333333'}}>Wishlist</Text>
@@ -190,7 +202,8 @@ const Footer = ({navigation,route}) => {
             return(
               <Pressable onPress={()=>{setScreen('Account')
               navigate.navigate('Account')            
-            }} >
+            }} 
+            style={{alignItems:'center',height:'100%',width:'100%'}}>
               <View>
               <Accountlogo  style={{alignSelf:'center'}} 
                 />

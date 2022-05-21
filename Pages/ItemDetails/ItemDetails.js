@@ -9,15 +9,18 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import RedStars from './../../asset/RedStars.svg';
 import { Pressable } from 'native-base';
 import { StatusBar } from 'react-native';
+import { useSelector,useDispatch } from 'react-redux';
+import { setCurrentScreen } from '../../Store/action';
 
 const ItemDetails = ({navigation,route}) => {
-
+    
     var [count,setCount] = useState(0);
     
     var Scale = new Animated.ValueXY({x:1,y:1})
     var MovementX = new Animated.Value(1)
     var MovementY = new Animated.Value(1)
     var opac = new Animated.Value(1)
+    const dispatch = useDispatch()
 
     var {value} = route.params;
     var x;
@@ -59,6 +62,7 @@ console.log(x)
 const handleBack = ()=>{
 
     setTimeout(()=>{
+        dispatch(setCurrentScreen('Home'))
         navigation.navigate('Home')
         anime.reset();
     },1000)
@@ -153,7 +157,10 @@ showHideTransition={true} />
 
 </View>
 
-<Pressable onPress={()=>navigation.navigate('Home')}>
+<Pressable onPress={()=>{
+dispatch(setCurrentScreen('Home'))
+    navigation.navigate('Home')
+}}>
 <View style={{backgroundColor:'#53b175',width:'100%',alignSelf:'center',borderRadius:15,marginTop:30}}>
     <Text style={{color:'white',textAlign:'center',paddingTop:18,paddingBottom:18}}>Add To Cart</Text>
 </View>

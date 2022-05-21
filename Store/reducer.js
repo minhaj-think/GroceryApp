@@ -6,7 +6,6 @@ const initialState = {
 
  const setScreen = (state=initialState,action)=>{
 
-    console.log('here==>',action.type)
 
     switch (action.type) {
         case 'setCurrentScreen':

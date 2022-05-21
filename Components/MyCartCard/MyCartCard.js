@@ -6,7 +6,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import { setCurrentScreen } from '../../Store/action';
 // import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-const MyCartCard = ({img,price,title,handle,resetHandle}) => {
+const MyCartCard = ({img,price,title,handle,resetHandle,hideCounts}) => {
 
 var navigation = useNavigation();
 var [count,setCount] = useState(0);
@@ -88,6 +88,8 @@ return (
             <View style={{marginLeft:10}}>
                 <Text style={{fontWeight:'700',color:'#333333'}}>{title}</Text>
                 <Text style={{fontSize:wp(3.5)}}>{price}</Text>
+                {
+                    !hideCounts &&
                 <View style={{display:'flex',flexDirection:'row',marginTop:20}}>
                 <Pressable onPress={()=>{
                     if(count>0){
@@ -115,7 +117,8 @@ return (
                     </View>
                     </Pressable>
                 </View>
-            </View>
+                }
+                </View>
             <View style={{backgroundColor:'#daf9e0',height:wp(5.5),width:wp(5.5),borderRadius:5}}>
                 <Text style={{color:'#40aa54',padding:3,paddingTop:0,textAlign:'center',marginTop:wp(-0.6)}}>x</Text>
             </View>

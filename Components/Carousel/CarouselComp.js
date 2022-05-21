@@ -10,7 +10,6 @@ const CarouselComp = () => {
 const [carouselIndex,setCarouselIndex] = useState(0)
 
   var _renderItem = ({item, index}) => {
-      console.log(index)
         return(
     <ImageBackground
     source={Offerslider}

@@ -64,9 +64,9 @@ showHideTransition={true} />
 
       {/* <MyCartList /> */}
       <View style={{marginTop:5}}>
-        <MyCartCard title={'Fresh Apple'} price={'$4.99'} img={AppleIcon} handle={handle} resetHandle={resetHandle} />
-        <MyCartCard  title={'Carrots'} price={'$6.99'} img={CarrotIcon} handle={handle} resetHandle={resetHandle} />
-        <MyCartCard title={'Bell Pepper Red'} price={'$4.99'} img={BananaIcon} handle={handle}  resetHandle={resetHandle}  />
+        <MyCartCard hideCounts={true} title={'Fresh Apple'} price={'$4.99'} img={AppleIcon} handle={handle} resetHandle={resetHandle} />
+        <MyCartCard hideCounts={true} title={'Carrots'} price={'$6.99'} img={CarrotIcon} handle={handle} resetHandle={resetHandle} />
+        <MyCartCard hideCounts={true} title={'Bell Pepper Red'} price={'$4.99'} img={BananaIcon} handle={handle}  resetHandle={resetHandle}  />
     </View>
 
 

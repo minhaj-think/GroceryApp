@@ -19,6 +19,7 @@ import OrderGreen from './../../asset/OrderGreen.svg'
 import CartGreen from './../../asset/CartGreen.svg'
 import WishListGreen from './../../asset/WishListGreen.svg'
 import { useSelector,useDispatch } from 'react-redux';
+import { setCurrentScreen } from '../../Store/action';
 import AccountGreen from './../../asset/AccountGreen.svg'
 
 import WhishList from '../../Pages/WhishList/WhishList.js';
@@ -37,9 +38,9 @@ const Footer = ({navigation,route}) => {
   const navigate = useNavigation();
   const [screen,setScreen] = useState('Home')
   var currentScreen = useSelector(state=>state.screen)
+  var dispatch = useDispatch();
 
   useEffect(()=>{
-
     setScreen(currentScreen)
 
   },[currentScreen])
@@ -71,6 +72,7 @@ const Footer = ({navigation,route}) => {
             return(
               <Pressable
               onPress={()=>{
+                dispatch(setCurrentScreen('Home'))
                 setScreen('Home')
                 navigate.navigate('Home')            
               }
@@ -88,6 +90,7 @@ const Footer = ({navigation,route}) => {
               <Pressable
               style={{alignItems:'center',height:'100%',width:'100%'}}
               onPress={()=>{
+                dispatch(setCurrentScreen('Home'))
                 setScreen('Home')
                 navigate.navigate('Home')            
               }
@@ -105,6 +108,7 @@ const Footer = ({navigation,route}) => {
           if(focused){
             return(
               <Pressable onPress={()=>{setScreen('Order')
+              dispatch(setCurrentScreen('Order History'))
               navigate.navigate('Order History')            
             } } >
               <View style={{alignItems:'center'}}>
@@ -116,6 +120,7 @@ const Footer = ({navigation,route}) => {
           }else{
             return(
               <Pressable onPress={()=>{setScreen('Order History')
+              dispatch(setCurrentScreen('Order History'))
               navigate.navigate('Order History')            
             } } 
             style={{alignItems:'center',height:'100%',width:'100%'}}>
@@ -131,6 +136,7 @@ const Footer = ({navigation,route}) => {
           if(focused){
             return(
               <Pressable  onPress={()=>{setScreen('Cart')  
+              dispatch(setCurrentScreen('Cart'))
               navigate.navigate('Cart')            
               }
             } >
@@ -143,6 +149,7 @@ const Footer = ({navigation,route}) => {
           }else{
             return(
               <Pressable  onPress={()=>{setScreen('Cart')  
+              dispatch(setCurrentScreen('Cart'))
               navigate.navigate('Cart')            
               }
             } 
@@ -161,6 +168,7 @@ const Footer = ({navigation,route}) => {
               <Pressable onPress={
                 ()=>{
               setScreen('Wishlist')
+              dispatch(setCurrentScreen('Whishlist'))
               navigate.navigate('Whishlist')            
             }}  >
               <View>
@@ -174,6 +182,7 @@ const Footer = ({navigation,route}) => {
               <Pressable onPress={
                 ()=>{
               setScreen('Whishlist')
+              dispatch(setCurrentScreen('Whishlist'))
               navigate.navigate('Whishlist')            
             }}  
             style={{alignItems:'center',height:'100%',width:'100%'}}>
@@ -189,6 +198,7 @@ const Footer = ({navigation,route}) => {
           if(focused){
             return(
               <Pressable onPress={()=>{setScreen('Account')
+              dispatch(setCurrentScreen('Account'))
               navigate.navigate('Account')            
             }} >
               <View>
@@ -201,6 +211,7 @@ const Footer = ({navigation,route}) => {
           }else{
             return(
               <Pressable onPress={()=>{setScreen('Account')
+              dispatch(setCurrentScreen('Account'))
               navigate.navigate('Account')            
             }} 
             style={{alignItems:'center',height:'100%',width:'100%'}}>
